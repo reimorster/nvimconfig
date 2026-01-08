@@ -24,6 +24,8 @@ o.smartcase = true
 
 o.swapfile = false
 
+o.foldlevel = 99
+
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
 
