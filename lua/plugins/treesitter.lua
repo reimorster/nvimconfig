@@ -3,9 +3,10 @@ return {
     branch = 'main', 
     lazy = false,
     build = ":TSUpdate",
+    ensure_installed = { "lua", "python", "rust", "markdown" , "toml", "json", "swift" , },
     config = function() 
         vim.api.nvim_create_autocmd('FileType', {
-            pattern = { 'python' },
+            pattern = { 'python', 'rust', 'swift' },
             callback = function() vim.treesitter.start() end,
         })
         vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'

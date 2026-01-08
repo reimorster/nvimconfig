@@ -20,10 +20,13 @@ vim.lsp.config("ruff", {
     }
 })
 
-
+vim.lsp.config("rust_analyzer", {
+    cmd = { "rustup", "run", "stable", "rust-analyzer" },
+})
 vim.lsp.enable("sourcekit")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
+vim.lsp.enable("rust_analyzer")
 
 vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP Actions',
@@ -32,3 +35,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {noremap = true, silent = true})
         end,
 })
+
+vim.diagnostic.config({
+    virtual_text = {
+        enabled = true,
+        -- Options can be set here:
+        severity_sort = true, -- Optional: sort messages by severity
+        -- source = "always",    -- Optional: show source name
+        -- ... and more (see :help vim.diagnostic.config)
+    },
+    signs = true, -- Shows icons in the sign column (gutter)
+    underline = true, -- Underlines the problematic text
+    update_in_insert = false, -- Don't update diagnostics while in insert mode (optional)
+})
+ 
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Open diagnostic float window" })
+
+vim.keymap.set('n', 'gK', function()
+                            local new_config = not vim.diagnostic.config().virtual_lines
+                            vim.diagnostic.config({ virtual_lines = new_config })
+                          end, 
+                { desc = 'Toggle diagnostic virtual_lines' })
+
