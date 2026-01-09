@@ -3,7 +3,7 @@ return {
     branch = 'main', 
     lazy = false,
     build = ":TSUpdate",
-    ensure_installed = { "lua", "python", "rust", "markdown" , "toml", "json", "swift" , },
+    ensure_installed = { "lua","pest", "python", "rust", "markdown" , "toml", "json", "swift" , },
     config = function() 
         vim.api.nvim_create_autocmd('FileType', {
             pattern = { 'python', 'rust', 'swift' },

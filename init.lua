@@ -1,10 +1,11 @@
 require("config.options")
 
+
 require("config.lazy")
 
--- require("config.plugins")
-
 require("lazy").setup ( { import = "plugins" } )
+
+require("config.keymappings")
 
 vim.lsp.config("ruff", {
     init_options = {
@@ -28,14 +29,14 @@ vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("rust_analyzer")
 
-vim.api.nvim_create_autocmd('LspAttach', {
-        desc = 'LSP Actions',
-        callback = function(args)
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, {noremap = true, silent = true})
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {noremap = true, silent = true})
-        end,
-})
-
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--         desc = 'LSP Actions',
+--         callback = function(args)
+--             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {noremap = true, silent = true})
+--             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {noremap = true, silent = true})
+--         end,
+-- })
+--
 vim.diagnostic.config({
     virtual_text = {
         enabled = true,
@@ -48,12 +49,3 @@ vim.diagnostic.config({
     underline = true, -- Underlines the problematic text
     update_in_insert = false, -- Don't update diagnostics while in insert mode (optional)
 })
- 
-vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Open diagnostic float window" })
-
-vim.keymap.set('n', 'gK', function()
-                            local new_config = not vim.diagnostic.config().virtual_lines
-                            vim.diagnostic.config({ virtual_lines = new_config })
-                          end, 
-                { desc = 'Toggle diagnostic virtual_lines' })
-
