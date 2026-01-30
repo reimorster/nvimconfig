@@ -49,3 +49,5 @@ vim.diagnostic.config({
     underline = true, -- Underlines the problematic text
     update_in_insert = false, -- Don't update diagnostics while in insert mode (optional)
 })
+
+require('colorizer').setup()
