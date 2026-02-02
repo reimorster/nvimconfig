@@ -66,6 +66,20 @@ map("n", "<leader>fg", telescope.live_grep, opts)
 map("n", "<leader>fb", telescope.buffers, opts)
 map("n", "<leader>fh", telescope.help_tags, opts)
 
+
+-- Split navigation
+-- same for tmux, must use vim-tmux-navigator plugin
+vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
+
+-- Allow Ctrl-h/j/k/l from terminal mode
+vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], { silent = true })
+vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], { silent = true })
+vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], { silent = true })
+vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], { silent = true })
+
 -- Lsp
 
 map("n", "gd", vim.lsp.buf.definition, opts)
@@ -92,5 +106,8 @@ map('n', 'gK', function()
                           end, 
                 { desc = 'Toggle diagnostic virtual_lines' })
 
+-- Define atalho para abrir/fechar o NvimTree (explorador de arquivos)
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
-
+-- Define atalho para abrir o Telescope (busca de arquivos)
+vim.keymap.set("n", "<leader>f", ":Telescope find_files<CR>", { noremap = true, silent = true })

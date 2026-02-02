@@ -28,13 +28,3 @@ o.foldlevel = 99
 
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
-
-vim.g.mapleader = " "
-vim.g.localmapleader = "\\"
-
--- Define atalho para abrir/fechar o NvimTree (explorador de arquivos)
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-
--- Define atalho para abrir o Telescope (busca de arquivos)
-vim.keymap.set("n", "<leader>f", ":Telescope find_files<CR>", { noremap = true, silent = true })
-

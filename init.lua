@@ -3,6 +3,9 @@ require("config.options")
 
 require("config.lazy")
 
+vim.g.mapleader = " "
+vim.g.localmapleader = "\\"
+
 require("lazy").setup ( { import = "plugins" } )
 
 require("config.keymappings")
@@ -51,3 +54,14 @@ vim.diagnostic.config({
 })
 
 require('colorizer').setup()
+
+require("avante").setup({
+  provider = "ollama",
+  custom_tools = {
+    require("mcphub.extensions.avante").mcp_tool("planning"),
+  },
+  system_prompt = function()
+    local hub = require("mcphub").get_hub_instance()
+    return hub:get_active_servers_prompt()
+ end,
+})
