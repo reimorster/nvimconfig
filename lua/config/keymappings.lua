@@ -1,11 +1,6 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- Make space the leader
-map({ "n", "v" }, "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
--- vim.g.maplocalleader = " "
-
 -- Better navigation on wrapped lines
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })

@@ -1,6 +1,5 @@
 require("config.options")
 
-
 require("config.lazy")
 
 vim.g.mapleader = " "
@@ -10,6 +9,8 @@ require("lazy").setup ( { import = "plugins" } )
 
 require("config.keymappings")
 
+
+-- LSP Configurations
 vim.lsp.config("ruff", {
     init_options = {
         settings = { 
@@ -27,10 +28,13 @@ vim.lsp.config("ruff", {
 vim.lsp.config("rust_analyzer", {
     cmd = { "rustup", "run", "stable", "rust-analyzer" },
 })
+
+-- Enabling LSP Servers
 vim.lsp.enable("sourcekit")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("lua_ls")
 
 -- vim.api.nvim_create_autocmd('LspAttach', {
 --         desc = 'LSP Actions',
@@ -65,3 +69,11 @@ require("avante").setup({
     return hub:get_active_servers_prompt()
  end,
 })
+
+require("lazydev").setup{
+    library = { "nvim-dap-ui" },
+}
+
+require("dap-python").setup("uv")
+require("dap-python").test_runner = "pytest"
+

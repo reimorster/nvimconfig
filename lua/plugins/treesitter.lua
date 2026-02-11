@@ -6,7 +6,7 @@ return {
     ensure_installed = { "lua","pest", "python", "rust", "markdown" , "toml", "json", "swift" , },
     config = function() 
         vim.api.nvim_create_autocmd('FileType', {
-            pattern = { 'python', 'rust', 'swift' },
+            pattern = { 'python', 'rust', 'swift', 'lua', 'pest', 'markdown', 'toml', 'json' },
             callback = function() vim.treesitter.start() end,
         })
         vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
