@@ -9,32 +9,6 @@ require("lazy").setup({ import = "plugins" })
 
 require("config.keymappings")
 
--- LSP Configurations
-vim.lsp.config("ruff", {
-	init_options = {
-		settings = {
-			organizeImports = true,
-			lint = {
-				enable = true,
-				run = "onType",
-			},
-			args = { "--ignore", "E501" },
-			showSyntaxErrors = true,
-		},
-	},
-})
-
-vim.lsp.config("rust_analyzer", {
-	cmd = { "rustup", "run", "stable", "rust-analyzer" },
-})
-
--- Enabling LSP Servers
-vim.lsp.enable("sourcekit")
-vim.lsp.enable("pyright")
-vim.lsp.enable("ruff")
-vim.lsp.enable("rust_analyzer")
-vim.lsp.enable("lua_ls")
-
 -- vim.api.nvim_create_autocmd('LspAttach', {
 --         desc = 'LSP Actions',
 --         callback = function(args)
@@ -43,6 +17,8 @@ vim.lsp.enable("lua_ls")
 --         end,
 -- })
 --
+
+-- TODO: maybe move to a separate file in future
 vim.diagnostic.config({
 	virtual_text = {
 		enabled = true,
@@ -56,32 +32,11 @@ vim.diagnostic.config({
 	update_in_insert = false, -- Don't update diagnostics while in insert mode (optional)
 })
 
+
+--- rgb colors
 require("colorizer").setup()
 
-require("avante").setup({
-	provider = "ollama",
-	model = vim.env.OLLAMA_MODEL,
-	providers = {
-		ollama = {
-			endpoint = vim.env.OLLAMA_BASE_URL,
-			model = vim.env.OLLAMA_BASE_MODEL,
-			is_env_set = require("avante.providers.ollama").check_endpoint_alive,
-			timeout = 30000,
-			extra_request_body = {
-				temperature = 0,
-				max_completion_tokens = 8192,
-			},
-		},
-	},
-	custom_tools = {
-		require("mcphub.extensions.avante").mcp_tool("planning"),
-	},
-	system_prompt = function()
-		local hub = require("mcphub").get_hub_instance()
-		return hub:get_active_servers_prompt()
-	end,
-})
-
+--- debug adapter protocol
 require("lazydev").setup({
 	library = { "nvim-dap-ui" },
 })
