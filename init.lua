@@ -43,3 +43,7 @@ require("lazydev").setup({
 
 require("dap-python").setup("uv")
 require("dap-python").test_runner = "pytest"
+
+require("avante").setup({
+        provider = "ollama"
+})

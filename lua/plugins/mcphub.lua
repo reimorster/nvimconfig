@@ -1,5 +1,6 @@
 return {
 	"ravitemer/mcphub.nvim",
+	enabled = false,
 	modifiable = true,
 	opts = {
 		extensions = {
