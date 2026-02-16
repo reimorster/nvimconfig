@@ -25,4 +25,7 @@ o.foldlevel = 99
 
 vim.cmd("syntax enable")
 vim.cmd("filetype on")
+
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
 vim.cmd("filetype plugin indent on")

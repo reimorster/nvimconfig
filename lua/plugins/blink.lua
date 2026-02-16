@@ -43,15 +43,15 @@ return {
 		sources = {
 			--- default = { "lsp", "path", "snippets", "buffer" },
 			default = { "lsp", "avante", "path", "snippets", "buffer" },
-                        providers = {
-                                avante = {
-                                        module = "blink-cmp-avante",
-                                        name = "Avante",
-                                        opts = {
-                                                --- opts for blink-cmp-avante
-                                        }
-                                }
-                        }
+			providers = {
+				avante = {
+					module = "blink-cmp-avante",
+					name = "Avante",
+					opts = {
+						--- opts for blink-cmp-avante
+					},
+				},
+			},
 		},
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
