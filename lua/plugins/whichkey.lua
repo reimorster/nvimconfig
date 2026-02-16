@@ -1,5 +1,5 @@
 -- Show keymaps
 return {
-        "folke/which-key.nvim",
-        event = "VeryLazy"
+	"folke/which-key.nvim",
+	event = "VeryLazy",
 }

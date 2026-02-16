@@ -5,8 +5,8 @@ return {
 	-- install jsregexp (optional!).
 	build = "make install_jsregexp",
 
-    config = function()
-        require("luasnip").config.setup({ enable_autosnippets = true })
-        require("luasnip.loaders.from_vscode").lazy_load()
-    end,
+	config = function()
+		require("luasnip").config.setup({ enable_autosnippets = true })
+		require("luasnip.loaders.from_vscode").lazy_load()
+	end,
 }

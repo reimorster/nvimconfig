@@ -1,5 +1,1 @@
-return { "folke/lazydev.nvim" ,
-    ft = {"lua","python"},
-    opts = {
-    },
-}
+return { "folke/lazydev.nvim", ft = { "lua", "python" }, opts = {} }
