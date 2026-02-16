@@ -6,6 +6,22 @@ return {
 	lazy = false,
 	version = false,
 	opts = {
+
+		providers = {
+			ollama = {
+				endpoint = vim.env.OLLAMA_BASE_URL,
+				model = vim.env.OLLAMA_MODEL,
+			},
+			["openrouter"] = {
+				__inherited_from = "openai",
+				endpoint = "https://openrouter.ai/api/v1",
+				api_key_name = "OPENROUTER_API_KEY",
+				model = "z-ai/glm-5",
+			},
+		},
+
+		provider = "ollama",
+                --- instructions_file = "avante.md",
 		input = {
 			provider = "snacks",
 			provider_opts = {
@@ -14,22 +30,6 @@ return {
 				icon = " ",
 			},
 		},
-
-		provider = "openrouter",
-		providers = {
-			ollama = {
-				endpoint = vim.env.OLLAMA_BASE_URL,
-				model = vim.env.OLLAMA_MODEL,
-			},
-			openrouter = {
-				__inherited_from = "openai",
-				endpoint = "https://openrouter.ai/api/v1",
-				api_key_name = "OPENROUTER_API_KEY",
-				model = "z-ai/glm-5",
-			},
-		},
-
-		instructions_file = "avante.md",
 	},
 	build = "make",
 	dependencies = {
@@ -67,7 +67,4 @@ return {
 		},
 		"nvim-tree/nvim-web-devicons",
 	},
-	config = function()
-		require("avante").setup({})
-	end,
 }
