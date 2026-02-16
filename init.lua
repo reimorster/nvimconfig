@@ -44,6 +44,24 @@ require("lazydev").setup({
 require("dap-python").setup("uv")
 require("dap-python").test_runner = "pytest"
 
-require("avante").setup({
-        provider = "ollama"
+local avante = require("avante")
+
+avante.setup({
+        ask = {
+                floating = true
+        },
+        provider = "openrouter",
+
+        providers = {
+		ollama = {
+		 	endpoint = vim.env.OLLAMA_BASE_URL,
+		 	model = vim.env.OLLAMA_MODEL,
+		},
+                ["openrouter"] = {
+                        __inherited_from = "openai",
+                        endpoint = "https://openrouter.ai/api/v1/",
+                        api_key_name = "OPENROUTER_API_KEY",
+                        model = "minimax/minimax-m2.5",
+                }
+        }
 })
