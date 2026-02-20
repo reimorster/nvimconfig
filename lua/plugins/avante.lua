@@ -6,19 +6,8 @@ return {
 	lazy = false,
 	version = false,
 	opts = {
-		provider = "ollama",
 		providers = {
-			ollama = {
-				endpoint = vim.env.OLLAMA_BASE_URL,
-				model = vim.env.OLLAMA_MODEL,
-			},
-			---			openrouter = {
-			---				__inherited_from = "openai",
-			---				endpoint = "https://openrouter.ai/api/v1",
-			---				api_key_name = "OPENROUTER_API_KEY",
-			---				model = "z-ai/glm-5",
-			---			},
-		},
+	},
 
 		input = {
 			provider = "snacks",
